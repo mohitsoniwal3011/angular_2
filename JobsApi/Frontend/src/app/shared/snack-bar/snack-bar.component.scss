@@ -1,0 +1,39 @@
+mat-progress-bar {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 7px;
+}
+
+mat-snack-bar {
+    border-radius: 10px;
+}
+
+
+.main-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.fa-circle-xmark {
+    color: #ca1803;
+}
+
+.fa-circle-check {
+    color: #07bc0c;
+}
+
+.fa-solid {
+    padding-right: 5px;
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+.span-style {
+    color: #757575;
+    padding-bottom: auto;
+    font-size: 17px;
+}

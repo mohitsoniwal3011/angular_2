@@ -1,0 +1,81 @@
+<div class="main-container">
+    <div class="mat-card-div">
+        <mat-card class="mat-elevation-z2">
+            <mat-card-content>
+                <div class="card-div">
+                    <span class="color-yellow">
+                        {{pending}}
+                    </span>
+                    <span class="span-style  bg-yellow">
+                        <i class="fa-solid fa-suitcase-rolling  color-yellow"></i>
+                    </span>
+                </div>
+                <h5 style="margin-top: 10px;">Pending Applications</h5>
+            </mat-card-content>
+            <mat-progress-bar mode="determinate" value="100" class="yellow"></mat-progress-bar>
+        </mat-card>
+
+
+        <mat-card class="mat-elevation-z2">
+            <mat-card-content>
+                <div class="card-div">
+                    <span class="color-blue">
+                        {{interview}}
+                    </span>
+                    <span class="span-style  bg-blue">
+                        <i class="fa-solid fa-check-to-slot  color-blue"></i>
+                    </span>
+                </div>
+                <h5 style="margin-top: 10px;">Interviews Scheduled</h5>
+            </mat-card-content>
+            <mat-progress-bar mode="determinate" value="100" class="blue"></mat-progress-bar>
+        </mat-card>
+
+
+
+        <mat-card class="mat-elevation-z2">
+            <mat-card-content>
+                <div class="card-div">
+                    <span class="color-red  ">
+                        {{declined}}
+                    </span>
+                    <span class="span-style bg-red">
+                        <i class="fa-solid fa-bug  color-red"></i>
+                    </span>
+                </div>
+                <h5 style="margin-top: 10px;">Jobs Declined</h5>
+            </mat-card-content>
+            <mat-progress-bar mode="determinate" value="100" class="red"></mat-progress-bar>
+        </mat-card>
+    </div>
+
+    <div class="chart-header-div">
+        <h3 style="text-align: center;">Job Analytics</h3>
+        <!-- <div style="display: flex;justify-content: center;align-items:center;">
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="background-color: #645cff; color: white;">
+                    Dropdown button
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li class="dropdown-item" (click)="changeChartType('bar')">Bar Chart</li>
+                    <li class="dropdown-item" (click)="changeChartType('line')">Area Chart</li>
+                    <li class="dropdown-item" (click)="changeChartType('pie')">Pie Chart</li>
+                </ul>
+            </div>
+        </div> -->
+    </div>
+    <div style="display: flex;flex-wrap: wrap; justify-content: space-around;">
+        <div style="min-width: 42%;min-height: 400px;">
+            <h3 style="text-align: center; margin-bottom: 1rem;">Job status</h3>
+            <app-pie-chart *ngIf="isLoaded" [chartId]="statusChartId" [chartType]="statusChartType"
+                [labels]="statusLabels" [backgound]="statusBackGround" [data]="statusData"></app-pie-chart>
+        </div>
+
+        <div style="min-width: 42%;min-height: 400px;">
+            <h3 style="text-align: center; margin-bottom: 1rem;">job Types</h3>
+            <app-pie-chart *ngIf="isLoaded" [chartId]="jobTypeChartId" [chartType]="jobTypeChartType"
+                [labels]="jobTypeLabels" [backgound]="jobTypeBackGround" [data]="jobTypeData"></app-pie-chart>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+.form-style {
+    width: fit-content;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+mat-form-field {
+    width: 30%;
+    margin: 10px;
+}
+
+
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: var(--grey-50);
+}
+
+.btn-style {
+    background-color: var(--grey-500);
+    color: white;
+    width: 30%;
+    margin: 10px;
+    height: 60px;
+    padding: 15px;
+    font-size: 20px;
+}
+
+.btn-submit {
+    background-color: var(--primary-color);
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+
+@media only screen and (max-width: 900px) {
+    mat-form-field  , .btn-style{
+        width: 46%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    mat-form-field  , .btn-style{
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    mat-form-field  , .btn-style{
+        width: 44%;
+    }
+}

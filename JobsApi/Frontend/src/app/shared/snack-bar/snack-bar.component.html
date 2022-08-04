@@ -1,0 +1,16 @@
+<div  class="main-div"  *ngIf="progress >= 0" >
+    <div class="left">
+        <span class="span-style">
+            <i *ngIf="data.type === 'success'"  class="fa-solid fa-circle-check" style="padding-right: 5px;
+            font-size: 20px;
+            padding-top: 5px;"></i>
+            <i  *ngIf="data.type === 'error'"  class="fa-solid fa-circle-xmark"  style="padding-right: 5px;
+            font-size: 20px;
+            padding-top: 5px;"></i>
+            {{data.message}}
+        </span>
+    </div>
+    
+    <button   mat-flat-button  style="color:#757575;  margin-left: auto;"  (click)="snackBarRef.dismiss()" [disableRipple]="true"><i class="fa-solid fa-xmark"  style="font-size: 20px;"></i></button>
+</div>
+<mat-progress-bar mode="determinate" [value]="progress"  [ngClass]="data.type"></mat-progress-bar>

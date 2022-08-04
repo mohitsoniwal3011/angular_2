@@ -1,0 +1,149 @@
+.main-container {
+    margin: 0 80px;
+    // background-color: red ;
+    padding: 32px 0;
+    // overflow-y: scroll;
+}
+
+
+mat-card {
+    width: 32%;
+    padding: 0;
+    border-radius: 5px;
+    // width: 95%;
+}
+
+mat-card-content {
+    padding: 32px;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.card-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+}
+
+.mat-card-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    //min-width: 450px;  //change here 
+
+}
+
+
+mat-progress-bar {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+// .fa-solid{
+//     width: 70px;
+//     height: 60px;
+//     background: rgb(252, 239, 199);
+//     border-radius: var(--borderRadius);
+//     display: flex;
+//     -webkit-box-align: center;
+//     align-items: center;
+//     -webkit-box-pack: center;
+//     justify-content: center;
+//     box-sizing: border-box;
+//     // font-size: 35px;
+// }
+.fa-suitcase-rolling,
+.fa-check-to-slot,
+.fa-bug {
+    font-size: 2rem;
+}
+
+.color-yellow {
+    color: rgb(233, 185, 73)
+}
+
+
+.bg-yellow {
+    background-color: var(--yellow-light);
+}
+
+
+.bg-blue {
+    background-color: var(--blue-light);
+}
+
+.bg-red {
+    background-color: var(--red-light);
+}
+
+
+
+.color-blue {
+    color: var(--blue-dark);
+}
+
+.color-red {
+    color: rgb(214, 106, 106);
+}
+
+.span-style {
+    width: 70px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+
+::ng-deep .mat-progress-bar-buffer {
+    background: #E4E8EB;
+}
+
+::ng-deep .mat-progress-bar {
+    border-radius: 2px;
+}
+
+.yellow {
+    ::ng-deep .mat-progress-bar-fill::after {
+        background-color: var(--yellow-dark);
+    }
+}
+
+.blue {
+    ::ng-deep .mat-progress-bar-fill::after {
+        background-color: var(--blue-dark);
+    }
+
+}
+
+.red {
+    ::ng-deep .mat-progress-bar-fill::after {
+        background-color: rgb(214, 106, 106);
+        ;
+    }
+}
+
+
+.chart-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.chart-header-div{
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+}

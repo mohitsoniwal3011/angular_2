@@ -1,0 +1,44 @@
+<mat-sidenav-container >
+    <mat-sidenav [fixedInViewport]="false" #sidenav opened  mode="side"   >
+        <img src="../../../assets/logo.557b8328.svg" class="img-fluid" alt="..." >
+        <div  style="height:400px;margin-top: 10rem;">
+            <button  mat-raised-button class="btn-style" routerLink="stats">
+                <mat-icon>assessment</mat-icon>
+                <mat-label>Stats</mat-label>
+            </button>
+            <button mat-raised-button  class="btn-style" routerLink="jobs" >
+                <mat-icon>gradient</mat-icon>
+                <mat-label>All Jobs</mat-label>
+            </button>
+            <button  mat-raised-button class="btn-style"  routerLink="add-job">
+                <mat-icon>add_note</mat-icon>
+                <mat-label>Add job</mat-label>
+            </button>
+            <button mat-raised-button   class="btn-style"  routerLink="profile">
+                <!-- <mat-icon>account_box</mat-icon> -->
+                <mat-icon>person</mat-icon>
+                <mat-label>Profile</mat-label>
+            </button>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content class="content "  >
+        <header>
+            <button mat-button class="toggle-btn"   (click)="sidenav.toggle()" >
+                <i class="fa-solid fa-align-left"></i>
+            </button>
+            <h1>Dashboard</h1>
+            <button  mat-raised-button  style="background-color: var(--primary-color); color: white;width:147px;"  [disableRipple]="true"
+                (click)="showLogOutOption = !showLogOutOption"
+            > 
+                <i class="fa-solid fa-user"  style="color:var(--primary-color);  background-color: white; border-radius: 50%;  padding: 3px;"></i>
+                {{username.split(' ')[0] | titlecase}}
+                <i class="fa-solid fa-caret-down"></i>
+            </button>
+            <button mat-stroked-button  *ngIf="showLogOutOption"  style="height : 34px; background-color: var(--blue-light); position: absolute;top: 72px;right:59px ;width: 147px;z-index: 100;  color: var(--blue-dark);height: 37px;"  (click)="logOutUser()">Logout</button>
+        </header>
+        <div   class="main-div-style">
+            <router-outlet>
+            </router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

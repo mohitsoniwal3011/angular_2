@@ -1,0 +1,43 @@
+<div class="main-div" >
+    <form class="form-style  mat-elevation-z3"  [formGroup] = "addJobForm" (ngSubmit)="onFormSubmit()">
+        <h3 style="margin-left: 20px;">Add job</h3>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Enter Company</mat-label>
+            <input matInput placeholder="Placeholder"  formControlName="company">
+            <mat-error *ngIf="addJobForm.get('company').hasError('required')">
+                Company name is required 
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" appearance="fill"  >
+            <mat-label>Enter position</mat-label>
+            <input matInput placeholder="Placeholder"  formControlName="position">
+            <mat-error *ngIf="addJobForm.get('position').hasError('required')">
+                Position is required 
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Job Location</mat-label>
+            <input matInput placeholder="e.g. banglore"  formControlName="joblocation"  >
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill"   >
+            <mat-label>Status</mat-label>
+            <mat-select  formControlName="status">
+                <mat-option  *ngFor="let status of statusType"  [value]="status">{{status}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill"   >
+            <mat-label>Job Type</mat-label>
+            <mat-select  formControlName="jobtype">
+                <mat-option  *ngFor="let job of jobTypes" [value]="job">{{job}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-button class="btn-style"  type="button"   (click)="resetForm()" >Clear Filter</button>
+        <button mat-button class="btn-style  btn-submit">Submit</button>
+    </form>
+</div>
+

@@ -1,0 +1,29 @@
+.main-content,
+.main-div,
+nav,
+body {
+    background-color: var(--gray-light);
+}
+
+
+
+.main-content {
+    width: 100%;
+    height: 55%;
+    display: flex;
+}
+
+
+
+.main-div {
+    height: calc(100vh - 6rem);
+}
+
+
+.btn-style {
+    background-color: #645cff;
+    width: 120px;
+    height: 40px;
+    font-weight: medium;
+    font-size: medium;
+}

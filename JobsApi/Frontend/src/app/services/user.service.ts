@@ -1,0 +1,34 @@
+import { HttpClient,HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Job , Jobs } from '../interfaces';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+  BASE_URL = 'https://jobs-io.herokuapp.com/api/v1/jobs'
+  constructor(private httpClient : HttpClient) {}
+
+  getAllJobs() : Observable<Jobs> {
+    return this.httpClient.get<Jobs>(`${this.BASE_URL}/`);
+  }
+
+  getSingleJob(id : string): Observable<Job> {
+    let httpParams = new HttpParams();
+    return this.httpClient.get<Job>(`${this.BASE_URL}/${id}`);
+  }
+
+  updateJob(id : string , body :any)  :Observable<Job>{
+    return this.httpClient.patch<Job>(`${this.BASE_URL}/${id}`, body);
+  }
+
+  createJob(details : any): Observable<Job>{
+    return this.httpClient.post<Job>(`${this.BASE_URL}/`, details);
+  }
+
+  deleteJob(id: string) : Observable<Job> {
+    return this.httpClient.delete<Job>(`${this.BASE_URL}/${id}`);
+  }
+
+}

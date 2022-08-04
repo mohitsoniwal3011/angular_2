@@ -1,0 +1,68 @@
+mat-card {
+    width: 700px;
+    border-radius: 3px;
+}
+
+mat-card-content {
+    padding-top: 20px;
+    display: flex;
+}
+
+.header-div {
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    width: 60px;
+    height: 60px;
+    background-color: #645cff;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: white;
+    border-radius: 3px;
+}
+
+.pending {
+    background-color: var(--yellow-light);
+    color: var(--yellow-dark);
+}
+
+.interview {
+    background-color: var(--blue-light);
+    color: var(--blue-dark);
+}
+
+.declined , .delete {
+    background-color: var(--red-light);
+    color: var(--red-dark);
+}
+
+.edit{
+    background-color: var(--green-light);
+    color: var(--green-dark);
+}
+.status-btn {
+    height: 33px;
+    width: 80px;
+    padding: 0;
+    cursor: text;
+}
+
+.m-right{
+    margin-right: 10px;
+}
+
+.btn-style {
+    // background-color: var(--green-light);
+    height: 33px;
+    padding: 0;
+    // color: var(--green-dark);
+    width: 80px;
+}

@@ -1,0 +1,35 @@
+<!-- style="width: 100vw; background-color: var(--gray-light) ; height: 100vh;"  -->
+<form [formGroup]="logInDetails" fxLayoutAlign="center center " style="background-color: var(--grey-50); " fxFlexFill  (ngSubmit)="getFormData()" >
+  <mat-card class="mat-card-style  d-flex justify-content-center flex-column   " fxFlex="25">
+
+    <div style="height: 70px;" class="d-flex justify-content-center">
+      <img src="../../../assets/logo.557b8328.svg" class="img-fluid" alt="...">
+    </div>
+
+    <div style="height: fit-content;">
+
+      <mat-form-field style="width: 100%;">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="peter@example.com" autocomplete="off" formControlName="email" required>
+        <mat-error *ngIf="logInDetails.get('email')?.hasError('required')">Email is required
+        </mat-error>
+        <mat-error *ngIf="logInDetails.get('email')?.hasError('pattern')">Please provide a valid Email
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field style="width: 100%;">
+        <mat-label>Enter your Password</mat-label>
+        <input matInput type="password" placeholder="secret..." autocomplete="off" formControlName="password"  required>
+        <mat-error *ngIf="logInDetails.get('password')?.hasError('required')">password is required
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button
+        class="btn-style">Submit</button>
+      <div style=" padding: 15px 0 0 0;" class="d-flex justify-content-center">
+        <p>Not a member yet ? <a routerLink="/register" style="text-decoration: none;">Signup</a></p>
+      </div>
+
+    </div>
+  </mat-card>
+</form>
