@@ -1,0 +1,16 @@
+<div class="div-style" (ngSubmit)="getTask();">
+  <h1 style="font-weight:lighter ;">Task Manager</h1>
+  <form [formGroup]="inputForm" (ngSubmit)="getTask()">
+    <div class="input-div">
+      <input type="text" name="name" placeholder="Enter tasks here " class="input-style" formControlName="name">
+      <button type="submit" class="btn-style" [disabled]="!inputForm.valid">Submit</button>
+    </div>
+    <span *ngIf="inputForm.get('name')?.touched  && inputForm.get('name')?.hasError('required')" class="span-style">No
+      Task Entered</span>
+  </form>
+</div>
+
+<div>
+  
+</div>
+<router-outlet></router-outlet>
