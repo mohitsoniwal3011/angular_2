@@ -1,6 +1,6 @@
 <div class="main-div"  *ngIf="isLoaded" >
     <form class="form-style  mat-elevation-z3"  [formGroup] = "editDetailsForm" (ngSubmit)="onSubmit()">
-        <h3 style="margin-left: 20px;">Update profile </h3>
+        <h3 class="grid-header">Update profile </h3>
         <mat-form-field appearance="fill">
             <mat-label>Name </mat-label>
             <input matInput placeholder="e.g. pater"   formControlName="name">

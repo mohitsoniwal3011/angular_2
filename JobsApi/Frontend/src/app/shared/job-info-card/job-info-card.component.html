@@ -1,4 +1,4 @@
-<mat-card  [style.width]="width" class="mat-elevation-z1"  [id]="job._id">
+<mat-card  [style.width]="width" class="mat-elevation-z1"  [id]="job._id"  >
     <div class="header-div">
         <div
            class="header-logo">
@@ -12,7 +12,7 @@
     </div>
     <mat-divider></mat-divider>
     <mat-card-content>
-        <div style="width: 50%; display: flex;flex-direction: column;">
+        <div   class="left-div">
             <div style="height: 45px;">
                 <i class="fa-solid fa-paper-plane" style="font-size: 20px;color: var(--card-icon-color)"></i>
                 <mat-label style="margin-left :10px ;font-size:large;">{{job.joblocation }}</mat-label>
@@ -23,13 +23,13 @@
                 <mat-label style="margin-left :10px ;font-size:large">{{job.jobtype}}</mat-label>
             </div>
 
-            <div style="height: 45px;">
+            <div style="height: 45px;"  class="btn-div">
                 <button  mat-button  class="btn-style edit  m-right"  (click)="editEvent()">Edit</button>
                 <button  mat-button  class="btn-style delete"  (click)="deleteEvent()">delete</button>
             </div>
 
         </div>
-        <div style="width: 50%; ">
+        <div class="right-div" >
             <div style="height: 45px;">
                 <i class="fa-solid fa-calendar-days" style="font-size: 20px;color: var(--card-icon-color)"></i>
                 <mat-label style="margin-left :10px ;font-size:large">{{job.createdAt  | date:'mediumDate'}}</mat-label>

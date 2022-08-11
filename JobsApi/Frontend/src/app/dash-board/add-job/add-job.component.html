@@ -1,7 +1,6 @@
 <div class="main-div" >
     <form class="form-style  mat-elevation-z3"  [formGroup] = "addJobForm" (ngSubmit)="onFormSubmit()">
-        <h3 style="margin-left: 20px;">Add job</h3>
-        
+        <h3 class="grid-header">Add job</h3>
         <mat-form-field appearance="fill">
             <mat-label>Enter Company</mat-label>
             <input matInput placeholder="Placeholder"  formControlName="company">

@@ -1,5 +1,5 @@
-<mat-sidenav-container >
-    <mat-sidenav [fixedInViewport]="false" #sidenav opened  mode="side"   >
+<mat-sidenav-container (resized)="onResized($event)">
+    <mat-sidenav [fixedInViewport]="false" #sidenav [(opened)]="isOpened" [mode]="mode" >
         <img src="../../../assets/logo.557b8328.svg" class="img-fluid" alt="..." >
         <div  style="height:400px;margin-top: 10rem;">
             <button  mat-raised-button class="btn-style" routerLink="stats">
@@ -23,7 +23,7 @@
     </mat-sidenav>
     <mat-sidenav-content class="content "  >
         <header>
-            <button mat-button class="toggle-btn"   (click)="sidenav.toggle()" >
+            <button mat-button class="toggle-btn"   (click)="isOpened = !isOpened" >
                 <i class="fa-solid fa-align-left"></i>
             </button>
             <h1>Dashboard</h1>

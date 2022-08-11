@@ -1,6 +1,6 @@
 <div class="main-div"  [formGroup] ="searchFilterDetails"  (ngSubmit)="filterJobs()">
     <form class="form-style  mat-elevation-z3"  >
-        <h3 style="margin-left: 20px;">Search Form </h3>
+        <h3 style="height: 10px;"  class="grid-header">Search Form </h3>
         <mat-form-field appearance="outline" appearance="fill">
             <mat-label>Company Name</mat-label>
             <input matInput placeholder="Placeholder"  formControlName="company">
@@ -31,25 +31,19 @@
                 <mat-option value="Z-A">Z-A</mat-option>
             </mat-select>
         </mat-form-field>
-        <button mat-button class="btn-style" type="button"  (click)="resetFilters()">Clear Filter</button>
-        <button mat-button class="btn-style btn-submit"  type="submit">Submit</button>
+        <button mat-flat-button class="btn-style" type="button"  (click)="resetFilters()">Clear Filter</button>
+        <button mat-flat-button class="btn-style btn-submit"  type="submit">Submit</button>
     </form>
     <div class="title">
         <h3>{{allJobs.length}} Jobs Found</h3>
     </div>
     <div class="row">
-        <app-job-info-card  class="card-style" [width]="'100%'" *ngFor="let job of allJobs; index as ind"  [job]="job"
+        <app-job-info-card  class="card-style  " [width]="'100%'" *ngFor="let job of allJobs; index as ind"  [job]="job"
         [ind]="ind"
         (onDelete)="handleDelete($event)"
 
         (onEdit)="handleEditEvent($event)"
         >
         </app-job-info-card>
-        <!-- <app-job-info-card  class="card-style" [width]="'100%'" ></app-job-info-card>  
-        <app-job-info-card  class="card-style" [width]="'100%'" ></app-job-info-card>  
-        <app-job-info-card  class="card-style" [width]="'100%'" ></app-job-info-card> 
-        <app-job-info-card  class="card-style" [width]="'100%'" ></app-job-info-card>  
-        <app-job-info-card  class="card-style" [width]="'100%'" ></app-job-info-card>  
-        <app-job-info-card  class="card-style" [width]="'100%'" ></app-job-info-card>  -->
     </div>
 </div>

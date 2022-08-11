@@ -10,7 +10,7 @@ import { StatsComponent } from './stats/stats.component';
 import { SharedModule } from "src/app/shared/shared.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { EditJobComponent } from './edit-job/edit-job.component';
-
+import { AngularResizeEventModule } from 'angular-resize-event';
 
 
 @NgModule({
@@ -27,7 +27,8 @@ import { EditJobComponent } from './edit-job/edit-job.component';
     MaterialModule, 
     AppRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularResizeEventModule
   ]
 })
 export class DashBoardModule { }
