@@ -1,13 +1,14 @@
 import { HttpClient,HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { Job , Jobs } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  BASE_URL = 'https://jobs-io.herokuapp.com/api/v1/jobs'
+  BASE_URL = `${environment.BASE_URL}/jobs`
   constructor(private httpClient : HttpClient) {}
 
   getAllJobs() : Observable<Jobs> {

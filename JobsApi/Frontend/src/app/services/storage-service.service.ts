@@ -50,4 +50,20 @@ export class StorageServiceService {
     }
     return null;
   } 
+
+  getUserEmail(): string | null{
+    const token = this.getDecodedToken();
+    if(token && token.email){      
+      return token.email;
+    }
+    return null;
+  }
+
+  getUserName(): string | null{
+    const token = this.getDecodedToken();
+    if(token && token.name){
+      return token.name;
+    }
+    return null;
+  }
 }

@@ -9,7 +9,6 @@ const errorHandlerMiddleWare = require('./midddleware/error-handler');
 const authHandlerRouter =  require('./routers/auth')
 const jobsHandlerRouter =  require('./routers/jobs');
 const utilityHandlerRouter  = require('./routers/utils')
-const { StatusCodes } = require('http-status-codes');
 const authMiddleWare = require('./midddleware/auth');
 const helmet = require('helmet');
 const xss = require('xss-clean');

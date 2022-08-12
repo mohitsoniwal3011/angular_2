@@ -1,4 +1,7 @@
-<div class="main-container">
+<div class="spinner-class"  *ngIf="!isLoaded">
+    <mat-spinner  diameter="45"></mat-spinner>
+</div>
+<div class="main-container"  *ngIf="isLoaded">
     <div class="mat-card-div">
         <mat-card class="mat-elevation-z2">
             <mat-card-content>

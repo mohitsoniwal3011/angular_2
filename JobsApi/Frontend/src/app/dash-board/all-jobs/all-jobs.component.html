@@ -37,7 +37,11 @@
     <div class="title">
         <h3>{{allJobs.length}} Jobs Found</h3>
     </div>
-    <div class="row">
+    <div class="spinner-class"  *ngIf="!isLoaded">
+        <mat-spinner  diameter="45"></mat-spinner>
+    </div>
+    <div class="row"  *ngIf="isLoaded">
+       
         <app-job-info-card  class="card-style  " [width]="'100%'" *ngFor="let job of allJobs; index as ind"  [job]="job"
         [ind]="ind"
         (onDelete)="handleDelete($event)"

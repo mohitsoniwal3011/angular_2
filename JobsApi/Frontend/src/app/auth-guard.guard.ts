@@ -16,7 +16,6 @@ export class AuthGuardGuard implements CanActivate {
     if(this.authService.loggedIn()){
       return true;
     }else {
-      // console.log('not authorized !!');
       this.router.navigate(['home'])
       return false;
     }

@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { ProfileInfo } from '../interfaces';
 import { StorageServiceService } from './storage-service.service';
 
-const BASE_URL = 'https://jobs-io.herokuapp.com/api/v1/util/'
+const BASE_URL = `${environment.BASE_URL}/util`
 @Injectable({
   providedIn: 'root'
 })
@@ -23,10 +24,10 @@ export class UtilityService {
   }
 
   getProfile() : Observable<ProfileInfo> {  
-    return this.httpClient.get<ProfileInfo>(`${BASE_URL}${this.storageService.getUserId()}`);
+    return this.httpClient.get<ProfileInfo>(`${BASE_URL}/${this.storageService.getUserId()}`);
   }
 
   updateProfile(details : any) : Observable<ProfileInfo>{
-      return this.httpClient.patch<ProfileInfo>(`${BASE_URL}update/${this.storageService.getUserId()}`,details );
+      return this.httpClient.patch<ProfileInfo>(`${BASE_URL}/update/${this.storageService.getUserId()}`,details );
   }
 }

@@ -26,6 +26,7 @@ export class DashBoardComponent implements OnInit {
   width: number = window.innerWidth;
   height: number = window.innerHeight;
   isOpened: boolean = true;
+  showDashBoardText : boolean = true;
   mode: MatDrawerMode = "side";
 
   toggleSideNav() {
@@ -54,6 +55,11 @@ export class DashBoardComponent implements OnInit {
   onResized(event: ResizedEvent) {
     this.height = event.newRect.height;
     this.width = event.newRect.width;
+    if(this.width <= 480 ){
+      this.showDashBoardText = false;
+    }else {
+      this.showDashBoardText = true;
+    }
     this.changeSideNav();
   }
 

@@ -26,7 +26,7 @@
             <button mat-button class="toggle-btn"   (click)="isOpened = !isOpened" >
                 <i class="fa-solid fa-align-left"></i>
             </button>
-            <h1>Dashboard</h1>
+            <h1  *ngIf="showDashBoardText">Dashboard</h1>
             <button  mat-raised-button  style="background-color: var(--primary-color); color: white;width:147px;"  [disableRipple]="true"
                 (click)="showLogOutOption = !showLogOutOption"
             > 

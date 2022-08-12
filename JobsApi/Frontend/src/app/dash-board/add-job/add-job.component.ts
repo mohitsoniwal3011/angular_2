@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from 'src/app/services/notification.service';
+import { StorageServiceService } from 'src/app/services/storage-service.service';
 import { UserService } from 'src/app/services/user.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-add-job',
@@ -17,7 +19,8 @@ export class AddJobComponent implements OnInit {
     private fb : FormBuilder,
     private userservice : UserService,
     private utilityService : UtilityService,
-    private notificationService : NotificationService
+    private notificationService : NotificationService, 
+    private storageService : StorageServiceService
   ) { 
     this.addJobForm = fb.group({
         company : ['', Validators.required] , 
@@ -39,6 +42,10 @@ export class AddJobComponent implements OnInit {
 
   onFormSubmit(){
     if(this.addJobForm.valid){
+      if(this.storageService.getUserEmail()  === environment.demoUserEmail){
+        this.notificationService.open('This is a demo user, read only...', 'error');
+        return;
+      }
       this.userservice.createJob(this.addJobForm.value).subscribe(res => {
           this.notificationService.open('Success', 'success')
       })

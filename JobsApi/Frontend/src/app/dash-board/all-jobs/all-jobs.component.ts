@@ -7,6 +7,8 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { lastValueFrom } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { EditJobComponent } from '../edit-job/edit-job.component';
+import { environment } from 'src/environments/environment.prod';
+import { StorageServiceService } from 'src/app/services/storage-service.service';
 @Component({
   selector: 'app-all-jobs',
   templateUrl: './all-jobs.component.html',
@@ -17,11 +19,13 @@ export class AllJobsComponent implements OnInit {
   jobTypes: string[] = [];
   statusType: string[] = [];
   allJobs : Job[] =[];
+  isLoaded : boolean = false;
   constructor(private utilityService: UtilityService,
     private fb: FormBuilder,
     private userService : UserService,
     private notificationService : NotificationService,
-    private dialog : MatDialog
+    private dialog : MatDialog,
+    private storageService : StorageServiceService
   ) {
     this.searchFilterDetails = fb.group({
       company: '',
@@ -46,6 +50,7 @@ export class AllJobsComponent implements OnInit {
   getJobs(){    
     this.userService.getAllJobs().subscribe(res => {
       this.allJobs = res.jobs
+      this.isLoaded=true;
     })
   }
   filterJobs() {
@@ -92,6 +97,10 @@ export class AllJobsComponent implements OnInit {
   }
 
   handleDelete(event : Job){
+    if(this.storageService.getUserEmail()  === environment.demoUserEmail){
+      this.notificationService.open('Demo user ,read Only...', 'error');
+      return ;
+    }
     this.userService.deleteJob(event._id).subscribe(res => {
         //any error will autometically caught in error interceptor 
         this.notificationService.open('Success', 'success')
@@ -100,7 +109,6 @@ export class AllJobsComponent implements OnInit {
   }
 
   handleEditEvent(event : JobEventInfo){
-    console.log("edit working ",event.job.company);
     let dialogRef = this.dialog.open(EditJobComponent, 
       { width:'900px',
         data:event.job,

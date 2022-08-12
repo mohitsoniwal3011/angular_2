@@ -26,6 +26,8 @@ export class ErrorInterceptor implements HttpInterceptor {
         console.error('An error occurred:', error.error);
       } else {
         console.error(`Backend returned code ${error.status}, body was: `, error.error);
+        console.log("error : ", error);
+        
       }
       let msg = 'Something Went wrong try again later';
       if (error.status == 400 || error.status == 401  || error.status == 404){

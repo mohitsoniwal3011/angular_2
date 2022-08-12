@@ -1,3 +1,7 @@
+<div class="spinner"  *ngIf="!isLoaded">
+    <mat-spinner diameter="45"></mat-spinner>
+</div>
+
 <div class="main-div"  *ngIf="isLoaded" >
     <form class="form-style  mat-elevation-z3"  [formGroup] = "editDetailsForm" (ngSubmit)="onSubmit()">
         <h3 class="grid-header">Update profile </h3>
@@ -21,7 +25,7 @@
             <input matInput placeholder="e.g. watson"  formControlName = "location">
         </mat-form-field>
         
-        <button mat-button class="btn-style">Clear Filter</button>
+        <button mat-button class="btn-style "  type="button"  (click)="resetForm()">Clear Form</button>
         <button mat-button class="btn-style  btn-submit">Submit</button>
     </form>
 </div>

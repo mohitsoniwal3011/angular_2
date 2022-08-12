@@ -7,6 +7,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { StorageServiceService } from 'src/app/services/storage-service.service';
 import { UserService } from 'src/app/services/user.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-edit-job',
@@ -43,8 +44,6 @@ export class EditJobComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log("data =", this.data);
-
     this.utilityService.getJobtypes().subscribe(res => {
       this.jobTypes = res;
     })
@@ -55,6 +54,10 @@ export class EditJobComponent implements OnInit {
 
   onFormSubmit() {
     if (this.editJobForm.valid) {
+      if(this.storageService.getUserEmail()  === environment.demoUserEmail){
+        this.notificationService.open('Demo user ,read Only...', 'error');
+        return ;
+      }
         this.userservice.updateJob(this.data._id,this.editJobForm.value).subscribe(res => {
           this.notificationService.open('Edited Job successfully', 'success');
           this.matRef.close(res);

@@ -5,6 +5,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from '@angular/router';
 import { StorageServiceService } from 'src/app/services/storage-service.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-login',
@@ -42,6 +43,13 @@ export class LoginComponent implements OnInit {
     this.authservice.logInUser(details.email, details.password).subscribe(res => {
       //errors are autometically checked in error interceptor 
       this.notificationService.open(`Welcome back ${res.user.name}`,'success');
+      this.storageService.setToken(res.token);
+      this.router.navigate(['dashboard']);
+    })
+  }
+  showDemoApp(){
+    this.authservice.logInUser(environment.demoUserEmail, environment.demoUserPassword).subscribe(res => {
+      this.notificationService.open(`Welcome back  ${res.user.name}`,'success');
       this.storageService.setToken(res.token);
       this.router.navigate(['dashboard']);
     })

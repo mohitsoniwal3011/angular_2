@@ -1,7 +1,7 @@
 export interface LogIn{
     token : string, 
     user : {
-        name : string
+        name : string;
     }
 }
 
@@ -29,6 +29,7 @@ export interface Jobs{
 export interface Token {
     userId: string,
     name: string,
+    email : string , 
     iat: number,
     exp: number
 }

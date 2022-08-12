@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfileInfo } from 'src/app/interfaces';
 import { NotificationService } from 'src/app/services/notification.service';
+import { StorageServiceService } from 'src/app/services/storage-service.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-profile',
@@ -18,17 +20,13 @@ export class ProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private utilityService: UtilityService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private storageService : StorageServiceService
   ) { }
   ngOnInit(): void {
     this.utilityService.getProfile().subscribe(res => {
       this.profileInfo = res;
-      this.editDetailsForm = this.fb.group({
-        name: [`${this.profileInfo.name}`, [Validators.minLength(3), Validators.maxLength(50)]],
-        lastname: [`${this.profileInfo.lastname}`],
-        email: [`${this.profileInfo.email}`, Validators.pattern(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)],
-        location: [`${this.profileInfo.location}`]
-      })
+      this.editDetailsForm = this.setInitialForm();
       this.isLoaded = true;
     })
   }
@@ -36,14 +34,13 @@ export class ProfileComponent implements OnInit {
   onSubmit() {
     const details = this.editDetailsForm.value;
     if (this.editDetailsForm.valid) {
+      if(this.storageService.getUserEmail()  === environment.demoUserEmail){
+        this.notificationService.open('Demo user ,read Only...', 'error');
+        return ;
+      }
       this.utilityService.updateProfile(this.editDetailsForm.value).subscribe(res => {
         this.profileInfo = res;
-        this.editDetailsForm.reset({
-          name: [`${this.profileInfo.name}`,],
-          lastname: [`${this.profileInfo.lastname}`],
-          email: [`${this.profileInfo.email}`],
-          location: [`${this.profileInfo.location}`]
-        })
+        this.editDetailsForm = this.setInitialForm();
         this.notificationService.open('Successfully updated profile!', 'success');
       })
     } else {
@@ -60,6 +57,18 @@ export class ProfileComponent implements OnInit {
         this.notificationService.open('Please provide a valid email address', 'error');
       }
     };
+  }
+
+  setInitialForm() {
+    return this.fb.group({
+      name: [`${this.profileInfo.name}`, [Validators.minLength(3), Validators.maxLength(50)]],
+      lastname: [`${this.profileInfo.lastname}`],
+      email: [`${this.profileInfo.email}`, Validators.pattern(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)],
+      location: [`${this.profileInfo.location}`]
+    })
+  }
+  resetForm(){
+    this.editDetailsForm = this.setInitialForm();
   }
 
 }

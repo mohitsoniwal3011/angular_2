@@ -6,14 +6,11 @@ mat-sidenav-container {
     height: 100vh;
     width: 100vw;
     background-color: var(--grey-100);
-    // overflow: scroll;
     overflow-x: hidden;
 }
 
 mat-sidenav {
-    // margin : 20px;
     width: var(--side-nav-width);
-    // border-radius: 20px;
     border-right: none;
     padding: 16px;
     padding-top: 40px;
@@ -21,17 +18,13 @@ mat-sidenav {
     background-color: white;
     display: flex;
     flex-direction: column;
-    //    justify-content: center;
     align-items: center;
 }
 
 .content {
-    // border-radius: 20px;
-    // margin: 20px 20px 20px 40px;
     height: 100vh;
     background-color: white;
     overflow-x: hidden;
-    // padding: 16px;
     box-sizing: border-box;
 }
 
@@ -70,9 +63,6 @@ header {
 .main-div-style {
     background-color: var(--grey-50);
     min-height: calc(100vh - 96px);
-    // border-radius: 12px;
-    // margin: 20px 0;
-    // padding: 20px  17px;
     border: 1px solid var(--grey-200);
     box-sizing: border-box;
 }
